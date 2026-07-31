@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: cloudops-frontend
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: cloudops-frontend
+
+  template:
+    metadata:
+      labels:
+        app: cloudops-frontend
+
+    spec:
+      containers:
+      - name: frontend
+
+        image: siaa28/cloudops-frontend:v1
+
+        ports:
+        - containerPort: 80
