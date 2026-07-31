@@ -3,13 +3,15 @@ kind: Service
 
 metadata:
   name: cloudops-backend-service
+  namespace: cloudops
 
 spec:
   selector:
     app: cloudops-backend
 
   ports:
-  - port: 5000
+  - protocol: TCP
+    port: 5000
     targetPort: 5000
 
   type: ClusterIP
