@@ -1,41 +1,102 @@
+<div align="center">
+
 # 🚀 Production-Ready Kubernetes Platform
 
-A production-ready cloud-native application deployed on Kubernetes with best practices including Deployments, Services, Ingress, HPA, ConfigMaps, Secrets, Persistent Volumes, Network Policies, Prometheus, Grafana, and Helm.
+### Enterprise-Grade Cloud-Native Application Deployment on Kubernetes
+
+A production-ready DevOps project demonstrating Kubernetes best practices including Deployments, Services, Ingress, Horizontal Pod Autoscaling (HPA), Persistent Volumes, ConfigMaps, Secrets, Network Policies, Helm, Prometheus, and Grafana Monitoring.
+
+![Kubernetes](https://img.shields.io/badge/Kubernetes-v1.34-blue?logo=kubernetes)
+![Docker](https://img.shields.io/badge/Docker-Containerized-blue?logo=docker)
+![Helm](https://img.shields.io/badge/Helm-Package%20Manager-0F1689?logo=helm)
+![Prometheus](https://img.shields.io/badge/Prometheus-Monitoring-orange?logo=prometheus)
+![Grafana](https://img.shields.io/badge/Grafana-Dashboard-F46800?logo=grafana)
+![License](https://img.shields.io/badge/License-MIT-green)
+
+</div>
 
 ---
 
-# 📌 Project Overview
+# 📖 Project Overview
 
-This project demonstrates how a modern microservice application is deployed on Kubernetes using production-ready architecture.
+This project demonstrates how a cloud-native application can be deployed on Kubernetes using production-ready DevOps practices.
 
-## Tech Stack
+The platform consists of a Flask backend and a frontend application deployed as Kubernetes workloads. It includes high availability, automatic scaling, persistent storage, monitoring, secure configuration management, and package management using Helm.
 
-- Kubernetes
-- Docker
-- Flask
-- React
-- Python
-- Nginx
-- Helm
-- Prometheus
-- Grafana
+The goal of this project is to simulate how applications are deployed and managed in real production Kubernetes clusters.
+
+---
+
+# ✨ Key Features
+
+- Kubernetes Deployments
+- ReplicaSets
+- Rolling Updates
+- Backend & Frontend Services
+- NGINX Ingress Controller
 - ConfigMaps
-- Secrets
-- Persistent Volumes
-- Horizontal Pod Autoscaler
+- Kubernetes Secrets
+- Resource Requests & Limits
+- Readiness Probes
+- Liveness Probes
+- Horizontal Pod Autoscaler (HPA)
+- Persistent Volume (PV)
+- Persistent Volume Claim (PVC)
 - Network Policies
+- Prometheus Monitoring
+- Grafana Dashboards
+- Helm Charts
+- Metrics Server Integration
 
 ---
 
-# 📂 Project Structure
+# 🛠 Technology Stack
 
-```
-production-ready-kubernetes-platform
+| Category | Technologies |
+|-----------|-------------|
+| Containerization | Docker |
+| Orchestration | Kubernetes |
+| Backend | Flask (Python) |
+| Frontend | React |
+| Web Server | NGINX |
+| Monitoring | Prometheus |
+| Visualization | Grafana |
+| Package Manager | Helm |
+| Configuration | ConfigMaps |
+| Secrets | Kubernetes Secrets |
+| Storage | Persistent Volume & PVC |
+| Scaling | Horizontal Pod Autoscaler |
+| Networking | Kubernetes Services & Ingress |
+
+---
+
+# 📁 Project Structure
+
+```text
+production-ready-kubernetes-platform/
 │
 ├── backend/
+│   ├── app.py
+│   ├── Dockerfile
+│   └── requirements.txt
+│
 ├── frontend/
+│
 ├── K8s/
+│   ├── backend-deployment.yaml
+│   ├── frontend-deployment.yaml
+│   ├── backend-service.yaml
+│   ├── frontend-service.yaml
+│   ├── ingress.yaml
+│   ├── backend-hpa.yaml
+│   ├── configmap.yaml
+│   ├── secret.yaml
+│   ├── persistent-volume.yaml
+│   ├── persistent-volume-claim.yaml
+│   └── network-policy.yaml
+│
 ├── screenshots/
+│
 └── README.md
 ```
 
@@ -43,51 +104,49 @@ production-ready-kubernetes-platform
 
 # 🏗 Architecture
 
-> Add your architecture diagram here.
+This project follows a production-style Kubernetes architecture.
 
 ```
-architecture/
+                    Internet
+                        │
+                NGINX Ingress Controller
+                        │
+         ┌──────────────┴──────────────┐
+         │                             │
+    Frontend Service              Backend Service
+         │                             │
+     Frontend Pods               Backend Pods
+                                      │
+                          ConfigMap + Secret
+                                      │
+                           Persistent Volume
+                                      │
+                         Horizontal Pod Autoscaler
+                                      │
+                      Prometheus + Grafana Monitoring
 ```
 
 ---
 
-# 🚀 Features
+# 🚀 Kubernetes Cluster
 
-- Kubernetes Deployments
-- ReplicaSets
-- Rolling Updates
-- Services
-- Ingress Controller
-- ConfigMaps
-- Secrets
-- Resource Requests & Limits
-- Liveness Probe
-- Readiness Probe
-- Horizontal Pod Autoscaler
-- Persistent Volumes
-- Persistent Volume Claims
-- Network Policies
-- Helm Deployment
-- Prometheus Monitoring
-- Grafana Dashboards
+The application is deployed inside a dedicated Kubernetes namespace.
 
----
-
-# 1️⃣ Kubernetes Cluster
-
-## Namespaces
+## Namespace
 
 ![](screenshots/01_kubernetes_cluster/namespaces.png)
 
 ---
 
-## Nodes Ready
+## Worker Nodes
 
 ![](screenshots/01_kubernetes_cluster/nodes_ready.png)
 
 ---
 
-# 2️⃣ Backend Deployment
+# 🚀 Backend Deployment
+
+The backend application is deployed using a Kubernetes Deployment with multiple replicas to ensure high availability.
 
 ## Backend Deployment
 
@@ -95,7 +154,7 @@ architecture/
 
 ---
 
-## Backend Pods Running
+## Backend Pods
 
 ![](screenshots/02_backend_deployment/backend_pods_running.png)
 
@@ -107,172 +166,9 @@ architecture/
 
 ---
 
-## Clean Backend Pods
+## Healthy Backend Pods
 
 ![](screenshots/02_backend_deployment/clean_backend_pods.png)
 
 ---
-
-# 3️⃣ Horizontal Pod Autoscaler
-
-## HPA Created
-
-![](screenshots/03_hpa_autoscaling/hpa_created.png)
-
----
-
-## Metrics Server Working
-
-![](screenshots/03_hpa_autoscaling/metrics_working.png)
-
----
-
-## Autoscaling
-
-![](screenshots/03_hpa_autoscaling/hpa_scaling.png)
-
----
-
-## Kubernetes Cluster Status & Autoscaling
-
-![](screenshots/03_hpa_autoscaling/kubernetes-cluster-status-and-autoscaling.png)
-
----
-
-# 4️⃣ Ingress
-
-## Ingress Configuration
-
-![](screenshots/04_ingress/ingress-configuration.png)
-
----
-
-## Services
-
-![](screenshots/04_ingress/services.png)
-
----
-
-## Rolling Update History
-
-![](screenshots/04_ingress/rolling-update-history.png)
-
----
-
-# 5️⃣ Monitoring
-
-## Grafana Dashboard
-
-![](screenshots/05_monitoring/grafana-kubernetes-dashboard.png)
-
----
-
-# 6️⃣ CloudOps Dashboard
-
-![](screenshots/06_dashboard/cloudops-dashboard.png)
-
----
-
-# 7️⃣ Persistent Storage
-
-## Persistent Volume Claim
-
-![](screenshots/10_volumes/persistent-volume-claim.png)
-
----
-
-# 8️⃣ Network Policy
-
-![](screenshots/11_network_policy/network-policy.png)
-
----
-
-# 9️⃣ Helm
-
-## Helm List
-
-![](screenshots/09_helm/helm-list.png)
-
----
-
-## Helm Releases
-
-![](screenshots/09_helm/helm-releases.png)
-
----
-
-## Helm History
-
-![](screenshots/09_helm/helm-frontend-history.png)
-
----
-
-## Kubernetes Resources After Helm
-
-![](screenshots/09_helm/kubernetes-resources-after-helm.png)
-
----
-
-## Kubernetes After Helm
-
-![](screenshots/09_helm/kubernetes-after-helm.png)
-
----
-
-# 📊 Monitoring
-
-- Prometheus
-- Grafana
-- Kubernetes Metrics Server
-
----
-
-# 🔐 Security
-
-- ConfigMaps
-- Secrets
-- Network Policies
-
----
-
-# 📦 Storage
-
-- Persistent Volume
-- Persistent Volume Claim
-
----
-
-# ⚡ Autoscaling
-
-- Horizontal Pod Autoscaler
-- CPU Based Scaling
-
----
-
-# 🚀 Deployment
-
-```bash
-kubectl apply -f K8s/
-```
-
----
-
-# 📈 Monitoring
-
-```bash
-kubectl top pods
-kubectl top nodes
-```
-
----
-
-# 👩‍💻 Author
-
-**Supraja**
-
-GitHub:
-https://github.com/suprajasree
-
-LinkedIn: https://www.linkedin.com/in/supraja-c
-
 
