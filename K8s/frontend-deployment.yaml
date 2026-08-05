@@ -3,7 +3,7 @@ kind: Deployment
 
 metadata:
   name: cloudops-frontend
-
+  namespace: production-platform
 spec:
   replicas: 2
 
@@ -20,7 +20,7 @@ spec:
       containers:
       - name: frontend
 
-        image: siaa28/cloudops-frontend:v1
+        image: siaa28/cloudops-frontend:v2
 
         ports:
         - containerPort: 80

@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+
+metadata:
+  name: cloudops-network-policy
+  namespace: production-platform
+
+spec:
+  podSelector:
+    matchLabels:
+      app: cloudops-backend
+
+  policyTypes:
+  - Ingress
+
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: cloudops-frontend
+
+    ports:
+    - protocol: TCP
+      port: 5000

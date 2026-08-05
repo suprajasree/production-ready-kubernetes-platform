@@ -3,7 +3,7 @@ kind: HorizontalPodAutoscaler
 
 metadata:
   name: cloudops-backend-hpa
-  namespace: cloudops
+  namespace: production-platform
 
 spec:
 

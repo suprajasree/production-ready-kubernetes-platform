@@ -3,20 +3,12 @@ kind: Deployment
 
 metadata:
   name: cloudops-backend
-  namespace: cloudops
+  namespace: production-platform
   labels:
     app: cloudops-backend
 
 spec:
   replicas: 2
-
-  revisionHistoryLimit: 5
-
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 1
-      maxSurge: 1
 
   selector:
     matchLabels:
@@ -30,17 +22,19 @@ spec:
     spec:
       containers:
       - name: backend
-
-        image: siaa28/cloudops-backend:v1
+        image: siaa28/cloudops-backend:v2
         imagePullPolicy: Always
 
         ports:
         - containerPort: 5000
 
+        volumeMounts:
+        - name: cloudops-storage
+          mountPath: /app/data
+
         envFrom:
         - configMapRef:
             name: cloudops-config
-
         - secretRef:
             name: cloudops-secret
 
@@ -48,7 +42,6 @@ spec:
           requests:
             cpu: "100m"
             memory: "128Mi"
-
           limits:
             cpu: "500m"
             memory: "256Mi"
@@ -58,19 +51,12 @@ spec:
             path: /health
             port: 5000
 
-          initialDelaySeconds: 5
-          periodSeconds: 10
-          timeoutSeconds: 3
-          failureThreshold: 3
-
         livenessProbe:
           httpGet:
             path: /health
             port: 5000
 
-          initialDelaySeconds: 15
-          periodSeconds: 20
-          timeoutSeconds: 3
-          failureThreshold: 3
-
-      restartPolicy: Always
+      volumes:
+      - name: cloudops-storage
+        persistentVolumeClaim:
+          claimName: cloudops-pvc

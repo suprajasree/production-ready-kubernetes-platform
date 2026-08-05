@@ -3,7 +3,7 @@ kind: Service
 
 metadata:
   name: cloudops-backend-service
-  namespace: cloudops
+  namespace: production-platform
 
 spec:
   selector:
