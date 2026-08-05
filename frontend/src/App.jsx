@@ -7,7 +7,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/")
+      .get("/api")
       .then((response) => {
         setDashboard(response.data);
       })

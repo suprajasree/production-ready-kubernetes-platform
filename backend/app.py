@@ -67,6 +67,15 @@ def metrics():
         "uptime": "12h 35m",
         "status": "Healthy"
     })
+@app.route("/stress")
+def stress():
+    x = 0
+    for i in range(150000000):
+        x += i * i
+    return jsonify({
+        "status": "CPU Stress Completed",
+        "result": x
+    })
 
 
 if __name__ == "__main__":
